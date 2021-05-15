@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Covid API</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, Helvetica, sans-serif;
+      padding-left: 1em;
+      padding-right: 1em;
+      align-content: center;
+      padding-bottom: 10px;
+      background-color: #2e3036;
+      color: lightgray;
+    "
+  >
+    <img
+      src="https://i.imgur.com/MRWGwE6.png"
+      height="120px"
+      style="padding-top: 1em"
+    />
+    <div
+      id="header"
+      style="display: inline-block; padding-left: 1em; padding-top: 1em"
+    >
+      <h1>The COVID-19 JSON API<br />that directly getting data from WHO</h1>
+      <h2>Without need of a token or API key,<br />without a ratelimit!</h2>
+    </div>
+    <p></p>
+    <div id="endpoints" style="padding-left: 1em">
+      <h2>Endpoints:</h2>
+      <ul>
+        <li>
+          <h3>GET /global</h3>
+          <p>Sends the global stats.</p>
+        </li>
+        <li>
+          <h3>GET /country/:country</h3>
+          <p>
+            Parameter country: 2-character country code(e.g. us, in, br) or
+            country name
+          </p>
+          <p>Sends the stats for that country.</p>
+        </li>
+        <li>
+          <h3>GET /all</h3>
+          <p>Sends all the data.</p>
+        </li>
+      </ul>
+    </div>
+    <div id="github" style="height: 7em; width: 15em">
+      <a href="https://github.com/electromeow/covidAPI">
+        <img src="https://i.imgur.com/OV2uF4S.png" height="100vw" />
+        <a href="https://github.com/electromeow/covidAPI" style="text-decoration: none; position: absolute; font-size: 1em">
+          <h3 style="color: white;">Contribute<br />on<br />GitHub</h3>
+        </div>
+      </a>
+    </div>
+  </body>
+</html>
