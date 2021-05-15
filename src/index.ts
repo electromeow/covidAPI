@@ -50,6 +50,34 @@ async function typeConverter(input: WHOCountry): Promise<OutputCountry> {
   return output;
 }
 
+function typeConverterSync(input: WHOCountry): OutputCountry {
+  const output: OutputCountry = {
+    name: input["﻿Name"],
+    region: input["WHO Region"],
+    totalCases: parseInt(input["Cases - cumulative total"]),
+    casesPer100000Population: parseInt(
+      input["Cases - cumulative total per 100000 population"]
+    ),
+    weeklyCases: parseInt(input["Cases - newly reported in last 7 days"]),
+    weeklyCasesPer100000Population: parseInt(
+      input["Cases - newly reported in last 7 days per 100000 population"]
+    ),
+    dailyCases: parseInt(input["Cases - newly reported in last 24 hours"]),
+    totalDeaths: parseInt(input["Deaths - cumulative total"]),
+    deathsPer100000Population: parseInt(
+      input["Deaths - cumulative total per 100000 population"]
+    ),
+    weeklyDeaths: parseInt(input["Deaths - newly reported in last 7 days"]),
+    weeklyDeathsPer100000Population: parseInt(
+      input["Deaths - newly reported in last 7 days per 100000 population"]
+    ),
+    dailyDeaths: parseInt(input["Deaths - newly reported in last 24 hours"]),
+    transmissionClassification: input["Transmission Classification"],
+  };
+
+  return output;
+}
+
 app.get(
   "/",
   async function (
@@ -146,11 +174,11 @@ app.get(
         return JSON.parse(result);
       })
       .then(async function (result: WHOCountry[]) {
-        const output: OutputCountry[] = [];
-        result.forEach(async function (x: WHOCountry) {
-          output.push(await typeConverter(x));
-        });
-        res.send(JSON.stringify(output));
+        res.send(
+          result.map((x: WHOCountry) => {
+            return typeConverterSync(x);
+          })
+        );
       });
   }
 );

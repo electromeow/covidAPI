@@ -24,6 +24,24 @@ async function typeConverter(input) {
     };
     return output;
 }
+function typeConverterSync(input) {
+    const output = {
+        name: input["﻿Name"],
+        region: input["WHO Region"],
+        totalCases: parseInt(input["Cases - cumulative total"]),
+        casesPer100000Population: parseInt(input["Cases - cumulative total per 100000 population"]),
+        weeklyCases: parseInt(input["Cases - newly reported in last 7 days"]),
+        weeklyCasesPer100000Population: parseInt(input["Cases - newly reported in last 7 days per 100000 population"]),
+        dailyCases: parseInt(input["Cases - newly reported in last 24 hours"]),
+        totalDeaths: parseInt(input["Deaths - cumulative total"]),
+        deathsPer100000Population: parseInt(input["Deaths - cumulative total per 100000 population"]),
+        weeklyDeaths: parseInt(input["Deaths - newly reported in last 7 days"]),
+        weeklyDeathsPer100000Population: parseInt(input["Deaths - newly reported in last 7 days per 100000 population"]),
+        dailyDeaths: parseInt(input["Deaths - newly reported in last 24 hours"]),
+        transmissionClassification: input["Transmission Classification"],
+    };
+    return output;
+}
 app.get("/", async function (req, res) {
     fsp
         .readFile("index.html", { encoding: "utf-8" })
@@ -93,11 +111,9 @@ app.get("/all", async function (req, res) {
         return JSON.parse(result);
     })
         .then(async function (result) {
-        const output = [];
-        result.forEach(async function (x) {
-            output.push(await typeConverter(x));
-        });
-        res.send(JSON.stringify(output));
+        res.send(result.map((x) => {
+            return typeConverterSync(x);
+        }));
     });
 });
 app.listen(443, async function () {
