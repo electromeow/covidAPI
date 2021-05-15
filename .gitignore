@@ -2,3 +2,4 @@ node_modules/
 .vscode/
 covidstats.csv
 covidstats.json
+out/
