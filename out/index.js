@@ -22,6 +22,8 @@ async function typeConverter(input) {
         dailyDeaths: parseInt(input["Deaths - newly reported in last 24 hours"]),
         transmissionClassification: input["Transmission Classification"],
     };
+    output.name = output.name.replace("[1]", "");
+    // Solves a problem about WHO's data. In WHO's data, Kosovo is mentioned as Kosovo[1].
     return output;
 }
 function typeConverterSync(input) {
@@ -40,6 +42,8 @@ function typeConverterSync(input) {
         dailyDeaths: parseInt(input["Deaths - newly reported in last 24 hours"]),
         transmissionClassification: input["Transmission Classification"],
     };
+    output.name = output.name.replace("[1]", "");
+    // Solves a problem about WHO's data. In WHO's data, Kosovo is mentioned as Kosovo[1].
     return output;
 }
 app.get("/", async function (req, res) {
