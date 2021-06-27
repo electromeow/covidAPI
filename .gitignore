@@ -3,3 +3,4 @@ node_modules/
 covidstats.csv
 covidstats.json
 out/*.js
+package-lock.json
