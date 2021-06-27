@@ -82,7 +82,7 @@ function typeConverterSync(input: WHOCountry): OutputCountry {
 }
 
 app.get(
-  "/",
+  "/covidapi",
   async function (
     req: typeof http.IncomingMessage,
     res: typeof http.ServerResponse
@@ -96,7 +96,7 @@ app.get(
 );
 
 app.get(
-  "/country/:country",
+  "/covidapi/country/:country",
   async function (
     req: typeof http.IncomingMessage,
     res: typeof http.ServerResponse
@@ -132,7 +132,7 @@ app.get(
 );
 
 app.get(
-  "/global",
+  "/covidapi/global",
   async function (
     req: typeof http.IncomingMessage,
     res: typeof http.ServerResponse
@@ -166,7 +166,7 @@ app.get(
 );
 
 app.get(
-  "/all",
+  "/covidapi/all",
   async function (
     req: typeof http.IncomingMessage,
     res: typeof http.ServerResponse
@@ -186,7 +186,7 @@ app.get(
   }
 );
 
-app.listen(443, async function () {
-  console.log("CovidAPI is listening on port 443!");
+app.listen(80, async function () {
+  console.log("CovidAPI is listening on port 80!");
   await bgtask();
 });
