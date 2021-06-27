@@ -1,6 +1,6 @@
 # Covid API
 
-## https://whocovidapi.glitch.me
+## https://electromeow.cf/covidapi
 
 A Covid API that fetches data directly from WHO.\
 It downloads the data from WHO as CSV and parses it.\
